@@ -1,4 +1,3 @@
-'use strict';
 let lastRenderTime = 0
 let gameOver = false
 let inputDirection = { x: 0, y: 0 }
