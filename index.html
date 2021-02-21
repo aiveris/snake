@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,7 @@
       justify-content: center;
       align-items: center;
       margin: 0;
-      background-color: black;
+      background-color: grey;
     }
 
     #game-board {
@@ -23,21 +24,87 @@
       display: grid;
       grid-template-rows: repeat(21, 1fr);
       grid-template-columns: repeat(21, 1fr);
+
     }
 
     .snake {
       background-color: hsl(100, 100%, 50%);
       border: .25vmin solid black;
+      box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
     }
 
     .food {
       background-color: hsl(20, 100%, 50%);
       border: .25vmin solid black;
+      box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    label {
+      font-weight: bold;
+      margin: 5px;
+      font-family: sans-serif;
+    }
+
+    #score {
+      color: red;
+      font-size: xx-large;
+      font-weight: bold;
+      margin: 10px;
+      font-family: sans-serif;
+    }
+
+    #level {
+      color: rgb(58, 10, 233);
+      font-size: xx-large;
+      font-weight: bold;
+      margin: 10px;
+      font-style: inherit;
+      font-family: sans-serif;
     }
   </style>
     <script src="game.js" defer type="module"></script>
+    <script>
+    function colorChanger(color) {
+      // document.getElementById("game-board").innerHTML = color;
+      // let x = console.log(color);
+      // document.getElementById("background-color").style.color = "color";
+      document.body.style.background = color;
+      // foodElement.style.color("red")
+    }
+
+    // function paceChanger(pace) {
+    //   let x = pace
+    //   console.log(x);
+    // }
+
+  </script>
 </head>
+
 <body>
 <div id="game-board"></div>
+
+<form>
+    <label>Level</label><br>
+    <p id="level"></p><br>
+    <label>Score</label><br>
+    <p id="score"></p><br>
+    <label>Color</label><br>
+    <input type="radio" name="color" onclick="colorChanger('grey');" checked>Grey<br>
+    <input type="radio" name="color" onclick="colorChanger('green');">Green<br>
+    <input type="radio" name="color" onclick="colorChanger('#00ff00');">Lime<br>
+    <input type="radio" name="color" onclick="colorChanger('yellow')">Yellow<br>
+    <input type="radio" name="color" onclick="colorChanger('orange')">Orange<br>
+    <input type="radio" name="color" onclick="colorChanger('blue')">Blue<br>
+    <input type="radio" name="color" onclick="colorChanger('#66ffff')">Sky<br>
+    <input type="radio" name="color" onclick="colorChanger('red')">Red<br>
+    <input type="radio" name="color" onclick="colorChanger('#ff99cc')">Pink<br>
+    <input type="radio" name="color" onclick="colorChanger('#ff00ff')">Magenta<br><br>
+    <!-- <label id="label">Pace</label><br>
+    <input type="radio" name="pace" value="1500" onclick="paceChanger(1500)">Slow<br>
+    <input type="radio" name="pace" value="1000" onclick="paceChanger(1000)" checked>Normal<br>
+    <input type="radio" name="pace" value="500" onclick="paceChanger(500)">Fast<br> -->
+</form>
+
 </body>
+
 </html>

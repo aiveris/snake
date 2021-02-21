@@ -7,14 +7,16 @@ const gameBoard = document.getElementById('game-board')
 const snakeBody = [{ x: 11, y: 11 }]
 const EXPANSION_RATE = 1
 const SNAKE_SPEED = 5
-let pace = 500
+let pace = 0
 let score = 0;
+// const countFruits = 0
+
 
 function main(currentTime) {
   if (gameOver) {
     if (confirm('You ate ' + score + ' fruits. Press ok to restart')) {
-      // location.reload();
-      window.location = '/'
+      location.reload();
+      // window.location = '/'
     }
     return
   }
@@ -22,9 +24,50 @@ function main(currentTime) {
   const secondsSinceLastRender = (currentTime - lastRenderTime) / pace
   if (secondsSinceLastRender < 1 / SNAKE_SPEED) return
   lastRenderTime = currentTime
+  if (score < 5) {
+    pace = 1000
+    document.getElementById("level").innerHTML = 1;
+  } else if (score > 4 && score < 9) {
+    pace = 900
+    document.getElementById("level").innerHTML = 2;
+    document.body.style.background = '#ff99cc'
+  } else if (score > 9 && score < 14) {
+    pace = 800
+    document.getElementById("level").innerHTML = 3;
+    document.body.style.background = '#99ccff'
+  }
+  else if (score > 14 && score < 19) {
+    pace = 700
+    document.getElementById("level").innerHTML = 4;
+    document.body.style.background = '#009999'
+  } else if (score > 19 && score < 24) {
+    pace = 650
+    document.getElementById("level").innerHTML = 5;
+    document.body.style.background = '#6699ff'
+  } else if (score > 24 && score < 29) {
+    pace = 600
+    document.getElementById("level").innerHTML = 6;
+    document.body.style.background = '#996633'
+  } else if (score > 29 && score < 34) {
+    pace = 550
+    document.getElementById("level").innerHTML = 7;
+    document.body.style.background = '#ff5050'
+  } else if (score > 34 && score < 39) {
+    pace = 500
+    document.getElementById("level").innerHTML = 8;
+    document.body.style.background = '#ff0000'
+  } else if (score > 39 && score < 44) {
+    pace = 450
+    document.getElementById("level").innerHTML = 9;
+    document.body.style.background = '#ff66ff'
+  } else if (score > 34 && score < 39) {
+    pace = 400
+    document.getElementById("level").innerHTML = 10;
+    document.body.style.background = '##ffff66'
+  }
+
   update()
   draw()
-
 }
 
 window.requestAnimationFrame(main)
@@ -72,13 +115,13 @@ function updateFood() {
   }
 }
 
-
 function drawFood(gameBoard) {
   const foodElement = document.createElement('div')
   foodElement.style.gridRowStart = food.y
   foodElement.style.gridColumnStart = food.x
   foodElement.classList.add('food')
   gameBoard.appendChild(foodElement)
+
 }
 
 function getRandomFoodPosition() {
@@ -132,13 +175,13 @@ function drawSnake(gameBoard) {
   })
 }
 
-function myFunction(color) {
-  const red = document.getElementById("snake").color = color;
-
-}
-
 function getSnakeHead() {
   return snakeBody[0]
+}
+
+function snakeHead() {
+  const x = snakeBody[1]
+  document.getElementById("x").innerHTML = score;
 }
 
 function snakeIntersection() {
@@ -165,5 +208,4 @@ window.addEventListener('keydown', e => {
       break
   }
 })
-
 
