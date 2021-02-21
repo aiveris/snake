@@ -24,53 +24,45 @@ function main(currentTime) {
   const secondsSinceLastRender = (currentTime - lastRenderTime) / pace
   if (secondsSinceLastRender < 1 / SNAKE_SPEED) return
   lastRenderTime = currentTime
-  if (score < 5) {
+  if (score < 9) {
     pace = 1100
     document.getElementById("level").innerHTML = 1;
-  } else if (score > 4 && score < 9) {
+  } else if (score > 9 && score < 19) {
     pace = 1050
     document.getElementById("level").innerHTML = 2;
     document.body.style.background = '#ff99cc'
-  } else if (score > 9 && score < 14) {
+  } else if (score > 19 && score < 29) {
     pace = 1000
     document.getElementById("level").innerHTML = 3;
     document.body.style.background = '#99ccff'
-  } else if (score > 14 && score < 19) {
+  } else if (score > 29 && score < 39) {
     pace = 950
     document.getElementById("level").innerHTML = 4;
     document.body.style.background = '#009999'
-  } else if (score > 19 && score < 24) {
+  } else if (score > 39 && score < 49) {
     pace = 900
     document.getElementById("level").innerHTML = 5;
     document.body.style.background = '#6699ff'
-  } else if (score > 24 && score < 29) {
+  } else if (score > 49 && score < 59) {
     pace = 850
     document.getElementById("level").innerHTML = 6;
     document.body.style.background = '#996633'
-  } else if (score > 29 && score < 34) {
+  } else if (score > 59 && score < 69) {
     pace = 800
     document.getElementById("level").innerHTML = 7;
     document.body.style.background = '#ff5050'
-  } else if (score > 34 && score < 39) {
+  } else if (score > 69 && score < 79) {
     pace = 750
     document.getElementById("level").innerHTML = 8;
     document.body.style.background = '#ff0000'
-  } else if (score > 39 && score < 44) {
+  } else if (score > 79 && score < 89) {
     pace = 700
     document.getElementById("level").innerHTML = 9;
     document.body.style.background = '#ff66ff'
-  } else if (score > 34 && score < 39) {
+  } else if (score > 89 && score < 99) {
     pace = 650
     document.getElementById("level").innerHTML = 10;
     document.body.style.background = '##ffff66'
-  } else if (score > 39 && score < 44) {
-    pace = 600
-    document.getElementById("level").innerHTML = 11;
-    document.body.style.background = '#ffcc66'
-  } else if (score > 44 && score < 49) {
-    pace = 550
-    document.getElementById("level").innerHTML = 12;
-    document.body.style.background = '#bf80ff'
   }
 
   update()
