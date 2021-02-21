@@ -1,3 +1,4 @@
+'use strict'
 let lastRenderTime = 0
 let gameOver = false
 let inputDirection = { x: 0, y: 0 }
@@ -7,20 +8,24 @@ const gameBoard = document.getElementById('game-board')
 const snakeBody = [{ x: 11, y: 11 }]
 const EXPANSION_RATE = 1
 const SNAKE_SPEED = 5
+let pace = 500
+let score = 0;
 
 function main(currentTime) {
   if (gameOver) {
-    if (confirm('You lost. Press ok to restart.')) {
-      location.reload();
+    if (confirm('You ate ' + score + ' fruits. Press ok to restart')) {
+      // location.reload();
+      window.location = '/'
     }
     return
   }
   window.requestAnimationFrame(main)
-  const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000
+  const secondsSinceLastRender = (currentTime - lastRenderTime) / pace
   if (secondsSinceLastRender < 1 / SNAKE_SPEED) return
   lastRenderTime = currentTime
   update()
   draw()
+
 }
 
 window.requestAnimationFrame(main)
@@ -63,8 +68,11 @@ function updateFood() {
   if (onSnake(food)) {
     expandSnake(EXPANSION_RATE)
     food = getRandomFoodPosition()
+    score++;
+    document.getElementById("score").innerHTML = score;
   }
 }
+
 
 function drawFood(gameBoard) {
   const foodElement = document.createElement('div')
@@ -81,13 +89,17 @@ function getRandomFoodPosition() {
   }
   return newFoodPosition
 }
-
 let food = getRandomFoodPosition()
 function onSnake(position, { ignoreHead = false } = {}) {
   return snakeBody.some((segment, index) => {
     if (ignoreHead && index === 0) return false
     return equalPositions(segment, position)
   })
+}
+
+function getInputDirection() {
+  lastInputDirection = inputDirection
+  return inputDirection
 }
 
 function updateSnake() {
@@ -121,6 +133,11 @@ function drawSnake(gameBoard) {
   })
 }
 
+function myFunction(color) {
+  const red = document.getElementById("snake").color = color;
+
+}
+
 function getSnakeHead() {
   return snakeBody[0]
 }
@@ -149,11 +166,5 @@ window.addEventListener('keydown', e => {
       break
   }
 })
-
-function getInputDirection() {
-  lastInputDirection = inputDirection
-  return inputDirection
-}
-
 
 
