@@ -206,7 +206,7 @@ window.addEventListener('keydown', e => {
   }
 })
 
-document.addEventListener('keyup', event => {
+document.addEventListener('keydown', event => {
   if (event.code === 'Space') {
     alert('Pause')
   }
