@@ -50,7 +50,7 @@ function main(currentTime) {
   } else if (score > 59 && score < 69) {
     pace = 800
     document.getElementById("level").innerHTML = 7;
-    document.body.style.background = '#ff5050'
+    document.body.style.background = '#d3c655'
   } else if (score > 69 && score < 79) {
     pace = 750
     document.getElementById("level").innerHTML = 8;
@@ -62,7 +62,7 @@ function main(currentTime) {
   } else if (score > 89 && score < 99) {
     pace = 650
     document.getElementById("level").innerHTML = 10;
-    document.body.style.background = '#ffff66'
+    document.body.style.background = '#55d3b1'
   }
   update()
   draw()
@@ -203,11 +203,12 @@ window.addEventListener('keydown', e => {
       if (lastInputDirection.x !== 0) break
       inputDirection = { x: 1, y: 0 }
       break
-    case 'Space':
-      if (event.code == 'Space') {
-      spaceDown = true;
-      spaceUp = false;
-      }
+  }
+})
+
+document.addEventListener('keyup', event => {
+  if (event.code === 'Space') {
+    alert('Pause')
   }
 })
 
