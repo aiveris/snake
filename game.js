@@ -9,7 +9,8 @@ const EXPANSION_RATE = 1
 const SNAKE_SPEED = 5
 let pace = 0
 let score = 0;
-// const countFruits = 0
+let record = 0;
+
 
 
 function main(currentTime) {
@@ -66,6 +67,7 @@ function main(currentTime) {
   }
   update()
   draw()
+  record()
 }
 
 window.requestAnimationFrame(main)
